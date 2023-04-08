@@ -1,5 +1,5 @@
 # FlutterBoostTest
-> gradle7.2集成flutter boost验证
+> gradle7.2集成flutter boost验证，重新clone之后记得先`futter pub get`
 
 # 集成flutter
 - 创建`Empty Activity`空项目
