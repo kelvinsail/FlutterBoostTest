@@ -1,5 +1,9 @@
 # FlutterBoostTest
 > gradle7.2集成flutter boost验证，重新clone之后记得先`futter pub get`
+- 环境：（公司项目需求）
+  - flutter：2.10.5 
+  - FlutterBoost：flutter_boost-3.0.0p1
+
 
 # 集成flutter
 - 创建`Empty Activity`空项目
@@ -54,3 +58,5 @@ dependencies {
     implementation project(':flutter')
 }
 ```
+
+# 集成`FlutterBoost`
