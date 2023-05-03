@@ -62,6 +62,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_boost:
+    dependency: "direct dev"
+    description:
+      path: "flutter_boost-3.0.0p1"
+      relative: true
+    source: path
+    version: "3.0.0"
   flutter_lints:
     dependency: "direct dev"
     description:
