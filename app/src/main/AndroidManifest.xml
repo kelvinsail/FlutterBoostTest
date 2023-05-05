@@ -18,6 +18,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--   自定义继承FlutterBoost框架页面容器的Activity     -->
+        <activity
+            android:name=".FlutterBaseActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density"
+            android:hardwareAccelerated="true"
+            android:theme="@style/appcompatTheme"
+            android:windowSoftInputMode="adjustResize">
+            <!--低端机上flutter-boost仍会出现跳转黑屏现象，这种方法可以解决,原理就是类似于原生闪屏页-->
+            <meta-data
+                android:name="io.flutter.app.android.SplashScreenUntilFirstFrame"
+                android:value="true" />
+        </activity>
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
     </application>
 
 </manifest>
