@@ -44,10 +44,13 @@ class _MyHomePageState extends State<MyHomePage> {
             //   },
             // )
             Text("测试"),
-            AndroidView(
-              viewType: 'plugins.flutter.io/custom_platform_view',
-              creationParams: {'text': 'Flutter传给Android中TextView的参数'},
-              creationParamsCodec: StandardMessageCodec(),
+            SizedBox(
+              height: 200,
+              child: AndroidView(
+                viewType: 'plugins.flutter.io/custom_platform_view',
+                creationParams: {'text': 'Flutter传给Android中TextView的参数'},
+                creationParamsCodec: StandardMessageCodec(),
+              ),
             )
           ],
         ),
