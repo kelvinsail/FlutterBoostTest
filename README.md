@@ -59,4 +59,24 @@ dependencies {
 }
 ```
 
-# 集成`FlutterBoost`
+# 集成`FlutterBoost`（本地）
+- 将`flutterBoost`项目（flutter_boost-3.0.0p1）复制到`flutter_module`根目录
+- `pubspec.yaml`配置文件加入flutterBoost配置
+```
+...
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
+  flutter_boost:
+    path: ./flutter_boost-3.0.0p1
+...省略
+```
+- 原生`build.gradle`加入flutterBoost应用：
+```
+dependencies {
+    ...
+    implementation project(':flutter')
+    implementation project(path: ':flutter_boost')
+}
+```

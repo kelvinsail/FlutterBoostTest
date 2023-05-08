@@ -7,7 +7,7 @@ import com.idlefish.flutterboost.containers.FlutterBoostActivity;
  *
  * created in 2023/5/5.
  *
- * used for
+ * used for Flutter容器类
  */
 public class FlutterBaseActivity extends FlutterBoostActivity {
 }
