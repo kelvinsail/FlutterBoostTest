@@ -1,4 +1,7 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
 void main() => runApp(const MyApp());
@@ -28,6 +31,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  static const String viewType = 'plugins.flutter.io/custom_platform_view';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
+          children: <Widget>[
             // InkResponse(
             //   onTap: (){
             //
@@ -45,16 +50,63 @@ class _MyHomePageState extends State<MyHomePage> {
             // )
             Text("测试"),
             SizedBox(
-              height: 200,
-              child: AndroidView(
-                viewType: 'plugins.flutter.io/custom_platform_view',
-                creationParams: {'text': 'Flutter传给Android中TextView的参数'},
-                creationParamsCodec: StandardMessageCodec(),
-              ),
+              height: 400,
+              width: double.infinity,
+              // child: AndroidView(
+              //   viewType: 'plugins.flutter.io/custom_platform_view',
+              //   creationParams: {'text': 'Flutter传给Android中TextView的参数'},
+              //   creationParamsCodec: StandardMessageCodec(),
+              // ),
+              child: buildTextureLayout(context)
             )
           ],
         ),
       ),
+    );
+  }
+
+  Widget buildVirtualDisplay(BuildContext context) {
+    // This is used in the platform side to register the view.
+    // Pass parameters to the platform side.
+    final Map<String, dynamic> creationParams = <String, dynamic>{};
+
+    return AndroidView(
+      viewType: viewType,
+      layoutDirection: TextDirection.ltr,
+      creationParams: creationParams,
+      creationParamsCodec: const StandardMessageCodec(),
+    );
+  }
+
+  Widget buildTextureLayout(BuildContext context) {
+    // This is used in the platform side to register the view.
+    // Pass parameters to the platform side.
+    const Map<String, dynamic> creationParams = <String, dynamic>{};
+
+    return PlatformViewLink(
+      viewType: viewType,
+      surfaceFactory:
+          (context, controller) {
+        return AndroidViewSurface(
+          controller: controller as AndroidViewController,
+          gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{},
+          hitTestBehavior: PlatformViewHitTestBehavior.opaque,
+        );
+      },
+      onCreatePlatformView: (params) {
+        return PlatformViewsService.initSurfaceAndroidView(
+          id: params.id,
+          viewType: viewType,
+          layoutDirection: TextDirection.ltr,
+          creationParams: creationParams,
+          creationParamsCodec: const StandardMessageCodec(),
+          onFocus: () {
+            params.onFocusChanged(true);
+          },
+        )
+          ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
+          ..create();
+      },
     );
   }
 }

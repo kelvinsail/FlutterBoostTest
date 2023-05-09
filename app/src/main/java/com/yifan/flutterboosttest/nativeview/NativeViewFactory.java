@@ -16,18 +16,18 @@ import io.flutter.plugin.platform.PlatformViewFactory;
  * used for
  */
 public class NativeViewFactory extends PlatformViewFactory {
-    private BinaryMessenger binaryMessenger;
 
     /**
      * @param createArgsCodec the codec used to decode the args parameter of {@link #create}.
      */
-    public NativeViewFactory(BinaryMessenger binaryMessenger) {
+    public NativeViewFactory() {
         super(StandardMessageCodec.INSTANCE);
-        this.binaryMessenger = binaryMessenger;
     }
 
     @Override
     public PlatformView create(Context context, int viewId, Object args) {
-        return new AndroidNativeView(context, binaryMessenger, viewId, args);
+        return new AndroidNativeView(context, viewId, args);
     }
+
+
 }

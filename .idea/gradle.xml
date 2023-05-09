@@ -17,7 +17,6 @@
             <option value="$PROJECT_DIR$/flutter_module/flutter_boost-3.0.0p1/android" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

@@ -1,6 +1,7 @@
 package com.yifan.flutterboosttest.nativeview;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,19 +26,20 @@ public class AndroidNativeView implements PlatformView {
 
     private Context context;
 
-    public AndroidNativeView(Context context, BinaryMessenger binaryMessenger, int viewId, Object args) {
+    public AndroidNativeView(Context context, int viewId, Object args) {
         this.context = context;
     }
 
     @Override
     public View getView() {
         View view = LayoutInflater.from(context).inflate(R.layout.layout_native_view, null, false);
+        //这句一定得加，不然空指针
+        view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         View.OnClickListener clickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (view instanceof Button) {
                     Log.i(TAG, "onClick: " + ((Button) view).getText().toString());
-//                    Toast.makeText(view.getContext(),((Button) view).getText().toString(),Toast.LENGTH_LONG).show();
                 }
             }
         };
@@ -44,7 +47,7 @@ public class AndroidNativeView implements PlatformView {
             View subView = ((ViewGroup) view).getChildAt(i);
             subView.setOnClickListener(clickListener);
         }
-        ((RecyclerView)view.findViewById(R.id.listView)).setAdapter(new Adapter());
+//        ((RecyclerView)view.findViewById(R.id.listView)).setAdapter(new Adapter());
         return view;
     }
 

@@ -33,8 +33,9 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^1.0.0
   flutter_boost:
-    path: ./flutter_boost-3.0.0p1
-
+    git:
+      url: 'https://github.com/alibaba/flutter_boost.git'
+      ref: '4.2.2'
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

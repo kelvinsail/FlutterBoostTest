@@ -16,17 +16,10 @@ import io.flutter.plugin.common.PluginRegistry;
 public class NativeViewPlugin implements FlutterPlugin {
     public static final String VIEW_ID = "plugins.flutter.io/custom_platform_view";
 
-    public static void registerWith(PluginRegistry.Registrar registrar) {
-        registrar.platformViewRegistry()
-                .registerViewFactory(VIEW_ID,
-                        new NativeViewFactory(registrar.messenger()));
-    }
-
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding binding) {
-        BinaryMessenger messenger = binding.getBinaryMessenger();
         binding.getPlatformViewRegistry()
-                .registerViewFactory(VIEW_ID, new NativeViewFactory(messenger));
+                .registerViewFactory(VIEW_ID, new NativeViewFactory());
     }
 
     @Override
