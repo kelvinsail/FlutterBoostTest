@@ -33,6 +33,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   static const String viewType = 'plugins.flutter.io/custom_platform_view';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,14 +51,17 @@ class _MyHomePageState extends State<MyHomePage> {
             // )
             Text("测试"),
             SizedBox(
-              height: 400,
+              height: 200,
               width: double.infinity,
               // child: AndroidView(
               //   viewType: 'plugins.flutter.io/custom_platform_view',
               //   creationParams: {'text': 'Flutter传给Android中TextView的参数'},
               //   creationParamsCodec: StandardMessageCodec(),
               // ),
-              child: buildTextureLayout(context)
+              // child: buildTextureLayout(context)
+              child: GestureDetector(
+                child: buildVirtualDisplay(context),
+              )
             )
           ],
         ),
@@ -72,6 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return AndroidView(
       viewType: viewType,
+      hitTestBehavior: PlatformViewHitTestBehavior.translucent,
       layoutDirection: TextDirection.ltr,
       creationParams: creationParams,
       creationParamsCodec: const StandardMessageCodec(),

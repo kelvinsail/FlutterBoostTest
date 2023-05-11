@@ -35,6 +35,16 @@ public class FlutterNativeActivity extends FlutterActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (null == getFlutterEngine() || null == getFlutterEngine().getPlugins()) {
+            Log.i(TAG, "onCreate: null");
+            return;
+        }
+//        getFlutterEngine().getPlugins().add(new NativeViewPlugin());
+//        GeneratedPluginRegistrant.registerWith(getFlutterEngine());
+//        PlatformViewRegistry registry = getFlutterEngine().getPlatformViewsController().getRegistry();
+//        registry.registerViewFactory(NativeViewPlugin.VIEW_ID,
+//                new NativeViewFactory());
     }
 
 

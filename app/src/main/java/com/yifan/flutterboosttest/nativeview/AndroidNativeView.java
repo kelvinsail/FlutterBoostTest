@@ -47,7 +47,7 @@ public class AndroidNativeView implements PlatformView {
             View subView = ((ViewGroup) view).getChildAt(i);
             subView.setOnClickListener(clickListener);
         }
-//        ((RecyclerView)view.findViewById(R.id.listView)).setAdapter(new Adapter());
+        ((RecyclerView)view.findViewById(R.id.listView)).setAdapter(new Adapter());
         return view;
     }
 

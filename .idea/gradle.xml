@@ -10,11 +10,11 @@
         <option name="gradleHome" value="$USER_HOME$/.gradle/wrapper/dists/gradle-6.5-all/2oz4ud9k3tuxjg84bbf55q0tn/gradle-6.5" />
         <option name="modules">
           <set>
+            <option value="$USER_HOME$/AppData/Local/Pub/Cache/git/flutter_boost-2e65cd6ebccd727c89d1a134175d724e5005a414/android" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/flutter_module" />
             <option value="$PROJECT_DIR$/flutter_module/.android/Flutter" />
-            <option value="$PROJECT_DIR$/flutter_module/flutter_boost-3.0.0p1/android" />
           </set>
         </option>
       </GradleProjectSettings>
